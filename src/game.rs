@@ -24,9 +24,15 @@ impl Command {
 }
 
 pub fn get_input() -> Command {
-    println!("");
+    println!();
+    // print() is Equivalent to the println! macro except that a newline is not printed at the end of the message.
     print!("> ");
-    // unwrap called b/c flush returns a Result, which throws error if unhandled
+    // flush(): Flush this output stream, ensuring that all intermediately buffered contents reach their destination.
+
+    // Note that stdout is frequently line-buffered by default so it may be necessary to use
+    // io::stdout().flush() to ensure the output is emitted immediately.
+
+    // unwrap() called b/c flush() returns a Result, which throws error if unhandled
     io::stdout().flush().unwrap();
 
     // String variable that holds the user entered string.
@@ -35,7 +41,7 @@ pub fn get_input() -> Command {
     io::stdin()
         .read_line(&mut input_str)
         .expect("Failed to read move.");
-    println!("");
+    println!();
 
     let mut command = Command::new();
     command.parse(input_str.as_str());

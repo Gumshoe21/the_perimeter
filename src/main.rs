@@ -2,7 +2,7 @@ pub mod game;
 
 fn main() {
     println!("Welcome to The Perimeter.");
-    println!("");
+    println!();
 
     let mut command = game::Command::new();
 
